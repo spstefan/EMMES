@@ -9,7 +9,7 @@
   </head>
   <body>
     <h1>EMMES</h1>
-    <div class="container">
+    <div class="container" id="main-container">
 
       <div class="box" id="stats-box"> 
         <h2>stats</h2>
@@ -17,12 +17,42 @@
       </div>
 
       <div class="box" id="content-box">
+        <nav>
+          <div class="container" id="tabs-container">
+
+            <ul>
+              <!-- <button class="tablink" onclick="openTab(event, 'tasks')">tasks</button>
+              <button class="tablink" onclick="openTab(event, 'store')">store</button> -->
+              <li><a id="tab-tasks" href="#tasks">tasks</a></li>
+              <li><a id="tab-store" href="#store">store</a></li>
+            </ul>
+
+            <div class="switcher" id="daily-weekly-monthly">
+              <button class="tablink" onclick="openTab(event, 'daily')">daily</button>
+              <button class="tablink" onclick="openTab(event, 'weekly')">weekly</button>
+              <button class="tablink" onclick="openTab(event, 'monthly')">monthly</button>
+            </div>
+
+          </div>
+        </nav>
+        
         <h2>content</h2>
-        <p>here comes lists</p>
+        <div class="tab-panels">
+
+          <div class="tabcontent" id="tasks">
+            <p>here are tasks</p>
+          </div>
+  
+          <div class="tabcontent" id="store">
+            <p>here is store</p>
+          </div>
+
+        </div>
+
       </div>
 
     </div>
-    
+
     <script src="oneko.js"></script>
     <script type="module" src="/main.js"></script>
   </body>
