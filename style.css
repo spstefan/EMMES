@@ -53,13 +53,15 @@ h1 {
   transition: border-color 0.25s;
 }
 
-.switcher#daily-weekly-monthly {
-  margin-left: auto;
+.nav-bar{
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
 }
 
-.tabs-list {
+.left-tabs {
   display: flex;
-  gap: 2rem;
 }
 
 .tab-button {

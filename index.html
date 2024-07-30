@@ -17,35 +17,30 @@
       </div>
 
       <div class="box" id="content-box">
-        <nav>
-          <div class="container" id="tabs-container">
+        <ul class="nav-bar">
+          <li class="left-tabs">
+            <a class="tab-button" id="tab-daily" href="#daily">daily</a>
+            <a class="tab-button" id="tab-weekly" href="#weekly">weekly</a>
+            <a class="tab-button" id="tab-monthly" href="#monthly">monthly</a>
+          </li>
+          <li><a class="tab-button" id="tab-store" href="#store">store</a></li>
+        </ul>
 
-            <ul class="tabs-list">
-              <!-- <button class="tablink" onclick="openTab(event, 'tasks')">tasks</button>
-              <button class="tablink" onclick="openTab(event, 'store')">store</button> -->
-              <li><a class="tab-button" id="tab-tasks" href="#tasks">tasks</a></li>
-              <li><a class="tab-button" id="tab-store" href="#store">store</a></li>
-            </ul>
-
-            <!-- <div class="switcher" id="daily-weekly-monthly">
-              <button class="tablink" onclick="openTab(event, 'daily')">daily</button>
-              <button class="tablink" onclick="openTab(event, 'weekly')">weekly</button>
-              <button class="tablink" onclick="openTab(event, 'monthly')">monthly</button>
-            </div> -->
-
-            <div class="tab__panels flow">
-              <div id="tasks">
-                <p>here are tasks</p>
-              </div>
-              <div id="store">
-                <p>here is store</p>
-              </div>
-            </div>
-
-          </div>
-        </nav>
-        
         <h2>content</h2>
+        <div class="tab-content">
+          <div id="store">
+            <p>here is store</p>
+          </div>
+          <div id="daily">
+            <p>here are dailies</p>
+          </div>
+          <div id="weekly">
+            <p>here are weeklies</p>
+          </div>
+          <div id="monthly">
+            <p>here are monthlies</p>
+          </div>
+        </div>
 
       </div>
 
