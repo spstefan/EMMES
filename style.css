@@ -56,3 +56,24 @@ h1 {
 .switcher#daily-weekly-monthly {
   margin-left: auto;
 }
+
+.tabs-list {
+  display: flex;
+  gap: 2rem;
+}
+
+.tab-button {
+  text-decoration: none; /* Remove default underline */
+  padding: 10px;
+  display: inline-block;
+  color: #00ff4c;
+}
+
+.tab-button.active {
+  border-bottom: 2px solid #ff00fb; /* Add underline for active tab */
+  font-weight: bold; /* Optional: Make active tab bold */
+}
+
+.tab-button:hover {
+  cursor: pointer;
+}
