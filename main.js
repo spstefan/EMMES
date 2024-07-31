@@ -12,7 +12,6 @@ tabButtons.forEach((tab, index) => {
     }
 });
 
-
 var activeContentId = "#daily"; 
 
 /* On click reveals tab contents and hides the others */
@@ -35,66 +34,78 @@ navBar.addEventListener("click", (e) => {
     });
 
     clickedTab.classList.add('active');
-} )
+});
 
 /* ---- TASK LISTS ---- */
 
-function initializeTaskList(activeContentId) {
-    const activeContent = document.getElementById(activeContentId.slice(1));
-    const taskList = activeContent.querySelectorAll(`ul${activeContentId}-tasks li`);
+const activeContent = document.getElementById(activeContentId.slice(1));
+const taskList = activeContent.querySelectorAll(`ul${activeContentId}-tasks li`);
 
-    var i;
-    for (i = 0; i < taskList.length; i++) {
-        var span = document.createElement("SPAN");
-        var txt = document.createTextNode("\u00D7");
-        span.className = "close";
-        span.appendChild(txt);
-        taskList[i].appendChild(span);
-    }
-
-    var close = document.getElementsByClassName("close");
-    var i;
-    for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-        var div = this.parentElement;
-        div.style.display = "none";
-    }
-    }
-
-    var list = activeContent.querySelector(`ul${activeContentId}-tasks`);
-
-    list.addEventListener('click', function(ev) {
-    if (ev.target.tagName === 'LI') {
-        console.log(ev.target);
-        ev.target.classList.toggle('checked');
-        }
-    }, false);
+var i;
+for (i = 0; i < taskList.length; i++) {
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    taskList[i].appendChild(span);
 }
 
-function newElement() {
-  var li = list.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = list.createTextNode(inputValue);
-  li.appendChild(t)
-  if (inputValue === '') {
-    alert("Input can not be empty!");
-  } else {
-    list.appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+}
+}
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
+var list = activeContent.querySelector(`ul${activeContentId}-tasks`);
 
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
+list.addEventListener('click', function(ev) {
+if (ev.target.tagName === 'LI') {
+    console.log(ev.target);
+    ev.target.classList.toggle('checked');
     }
-  }   
-} 
+}, false);
 
-initializeTaskList(activeContentId);
+function newListElement() {
+    
+    var li = document.createElement("li");
+    var inputValue = document.getElementById("myInput").value;
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
+    if (inputValue === '') {
+        alert("Input can not be empty!");
+    } else {
+        document.getElementById(`${activeContentId.slice(1)}-tasks`).appendChild(li);
+    }
+    document.getElementById("myInput").value = "";
+
+    
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
+
+
+    var close = document.getElementsByClassName("close");
+    for (var i = 0; i < close.length; i++) {
+        close[i].onclick = function() {
+            var div = this.parentElement;
+            div.style.display = "none";
+        }
+    }   
+    
+}
+
+// Add task when "add" button is pressed
+document.querySelector(".addBtn").addEventListener("click", newListElement);
+
+// Attach event listener to the input field to handle Enter key
+document.getElementById("myInput").addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        newListElement();
+    }
+});
