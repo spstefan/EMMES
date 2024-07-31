@@ -28,17 +28,26 @@
 
         <h2>content</h2>
         <div class="tab-content">
-          <div id="store">
-            <p>here is store</p>
-          </div>
           <div id="daily">
             <p>here are dailies</p>
+            <ul id="daily-tasks">
+              <li>Hit the gym</li>
+              <li class="checked">Pay bills</li>
+              <li>Meet George</li>
+            </ul>
+            <div id="new-task" class="header">
+              <input type="text" id="myInput" placeholder="new task">
+              <span onclick="newListElement()" class="addBtn">add</span>
+            </div>
           </div>
           <div id="weekly">
             <p>here are weeklies</p>
           </div>
           <div id="monthly">
             <p>here are monthlies</p>
+          </div>
+          <div id="store">
+            <p>here is store</p>
           </div>
         </div>
 
