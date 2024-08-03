@@ -82,8 +82,80 @@ h1 {
 }
 
 /* When clicked on, add a background color and strike out text */
-ul li.checked {
-  background: #888;
-  color: #fff;
+.tab-content ul li.checked {
+  background: #cfc2ad;
+  color: #888888;
   text-decoration: line-through;
+}
+
+.tab-content ul {
+  padding-left: 0;
+}
+
+/* Style the list items */
+.tab-content ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 0.8rem;
+  margin: 0.5rem 0 0 0;
+  background: #d4c1a3;
+  transition: 0.2s;
+  list-style: none;
+  border-radius: 10px;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Darker background-color on hover */
+.tab-content ul li:hover {
+  background: #bcaa8e;
+}
+
+/* Style the close button */
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 14px 16px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;
+}
+
+
+/* Style the input */
+input {
+  margin: 0;
+  border: none;
+  border-radius: 10px 0 0 10px;
+  width: 71%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+/* Style the "Add" button */
+.addBtn {
+  padding: 0.5rem;
+  width: 20%;
+  background: #d4c1a3;
+  color: #222222;
+  float: left;
+  text-align: center;
+  font-size: px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 0 10px 10px 0;
+}
+
+.addBtn:hover {
+  background-color: #bcaa8e;
 }
