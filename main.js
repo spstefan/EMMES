@@ -12,6 +12,7 @@ tabButtons.forEach((tab, index) => {
     }
 });
 
+const inputBar = document.getElementById("new-task");
 var activeContentId = "#daily"; 
 var activeContent = document.getElementById(activeContentId.slice(1));
 var taskList = activeContent.querySelectorAll(`ul${activeContentId}-tasks li`);
@@ -38,18 +39,30 @@ navBar.addEventListener("click", (e) => {
 
     clickedTab.classList.add('active');
 
+    // Refresh the UI and the variables upon changing tab
+    if (activeContentId === "#store") {
+        inputBar.setAttribute("hidden", true);
+    } else {
+        refreshUI();
+        if (inputBar.hasAttribute("hidden", true)) {
+            inputBar.removeAttribute("hidden");
+        }
+    }
+});
+
+/* ---- TASK LISTS ---- */
+
+function refreshUI() {
     activeContent = document.getElementById(activeContentId.slice(1));
     taskList = activeContent.querySelectorAll(`ul${activeContentId}-tasks li`);
     list = activeContent.querySelector(`ul${activeContentId}-tasks`);
     checkTaskListener();
     addCloseButton();
     closeTask();
-});
+}
 
-/* ---- TASK LISTS ---- */
-
+// Add an X to tasks to be able to close them
 function addCloseButton() {
-    // Add an X to tasks to be able to close them
     var i;
     for (i = 0; i < taskList.length; i++) {
         var span = document.createElement("SPAN");
@@ -61,8 +74,8 @@ function addCloseButton() {
 }
 addCloseButton();
 
+// Delete tasks by clicking on the X
 function closeTask() {
-    // Delete tasks by clicking on the X
     var close = document.getElementsByClassName("close");
     var i;
     for (i = 0; i < close.length; i++) {
