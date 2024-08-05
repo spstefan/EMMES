@@ -13,6 +13,9 @@ tabButtons.forEach((tab, index) => {
 });
 
 var activeContentId = "#daily"; 
+var activeContent = document.getElementById(activeContentId.slice(1));
+var taskList = activeContent.querySelectorAll(`ul${activeContentId}-tasks li`);
+var list = activeContent.querySelector(`ul${activeContentId}-tasks`);
 
 /* On click reveals tab contents and hides the others */
 navBar.addEventListener("click", (e) => {
@@ -34,40 +37,56 @@ navBar.addEventListener("click", (e) => {
     });
 
     clickedTab.classList.add('active');
+
+    activeContent = document.getElementById(activeContentId.slice(1));
+    taskList = activeContent.querySelectorAll(`ul${activeContentId}-tasks li`);
+    list = activeContent.querySelector(`ul${activeContentId}-tasks`);
+    checkTaskListener();
+    addCloseButton();
+    closeTask();
 });
 
 /* ---- TASK LISTS ---- */
 
-const activeContent = document.getElementById(activeContentId.slice(1));
-const taskList = activeContent.querySelectorAll(`ul${activeContentId}-tasks li`);
-
-var i;
-for (i = 0; i < taskList.length; i++) {
-    var span = document.createElement("SPAN");
-    var txt = document.createTextNode("\u00D7");
-    span.className = "close";
-    span.appendChild(txt);
-    taskList[i].appendChild(span);
+function addCloseButton() {
+    // Add an X to tasks to be able to close them
+    var i;
+    for (i = 0; i < taskList.length; i++) {
+        var span = document.createElement("SPAN");
+        var txt = document.createTextNode("\u00D7");
+        span.className = "close";
+        span.appendChild(txt);
+        taskList[i].appendChild(span);
+    };
 }
+addCloseButton();
 
-var close = document.getElementsByClassName("close");
-var i;
-for (i = 0; i < close.length; i++) {
-close[i].onclick = function() {
-    var div = this.parentElement;
-    div.style.display = "none";
+function closeTask() {
+    // Delete tasks by clicking on the X
+    var close = document.getElementsByClassName("close");
+    var i;
+    for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+        var div = this.parentElement;
+        div.style.display = "none";
+        }
+    }  
+};
+closeTask();
+
+// Check tasks off by clicking on them
+function checkTaskListener() {
+    list.addEventListener('click', function(ev) {
+        console.log(ev.target + " was clicked");
+    if (ev.target.tagName === 'LI') {
+        console.log(ev.target);
+        ev.target.classList.toggle('checked');
+        }
+    }, false);
 }
-}
+checkTaskListener();
 
-var list = activeContent.querySelector(`ul${activeContentId}-tasks`);
-
-list.addEventListener('click', function(ev) {
-if (ev.target.tagName === 'LI') {
-    console.log(ev.target);
-    ev.target.classList.toggle('checked');
-    }
-}, false);
-
+// add new task with input field
 function newListElement() {
     
     var li = document.createElement("li");
