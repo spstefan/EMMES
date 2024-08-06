@@ -69,7 +69,9 @@ function addCloseButton() {
         var txt = document.createTextNode("\u00D7");
         span.className = "close";
         span.appendChild(txt);
-        taskList[i].appendChild(span);
+        if (!taskList[i].querySelector("span.close")) {
+            taskList[i].appendChild(span);
+        }
     };
 }
 addCloseButton();
@@ -89,6 +91,7 @@ closeTask();
 
 // Check tasks off by clicking on them
 function checkTaskListener() {
+    console.log("checkTaskListener was run")
     list.addEventListener('click', function(ev) {
         console.log(ev.target + " was clicked");
     if (ev.target.tagName === 'LI') {
