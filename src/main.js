@@ -1,3 +1,4 @@
+
 /* ---- NAVIGATION IN CONTENT BOX ---- */
 const navBar = document.querySelector(".nav-bar");
 const tabButtons = navBar.querySelectorAll(".tab-button");
@@ -17,6 +18,44 @@ var activeContentId = "#daily";
 var activeContent = document.getElementById(activeContentId.slice(1));
 var taskList = activeContent.querySelectorAll(`ul${activeContentId}-tasks li`);
 var list = activeContent.querySelector(`ul${activeContentId}-tasks`);
+
+const testBox = document.querySelector(".testbox");
+const testButtons = testBox.querySelectorAll(".testButtons .tab-button")
+const testContent = testBox.querySelectorAll(".testContent > div")
+
+/* testButtons.forEach(btn => {
+    console.log('button: ', btn);
+});
+
+testContent.forEach(child => {
+    console.log('content div: ', child);
+    
+    const paragraphs = child.querySelectorAll('p');
+    paragraphs.forEach(leaf => {
+        console.log('leaf: ', leaf);
+        
+    });
+}); */
+
+import { switchTab } from "./tabs"
+
+testButtons.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        const focusTab = e.target
+        if (!focusTab) return;
+        e.preventDefault();
+
+        let focusTabId = focusTab.getAttribute('id');
+        focusTabId = focusTabId.split("-button")[0];
+
+        const tabList = Array.from(testContent)
+        const targetDiv = tabList.find(div => div.id === focusTabId)
+        const remainingDivs = tabList.filter(div => div !== targetDiv)
+        
+        switchTab(targetDiv, remainingDivs);
+    });
+});
+
 
 /* On click reveals tab contents and hides the others */
 navBar.addEventListener("click", (e) => {
@@ -144,3 +183,4 @@ document.getElementById("myInput").addEventListener("keypress", function(event) 
         newListElement();
     }
 });
+

@@ -2,17 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EMMES</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/src/style.css">
+    <link rel="icon" href="./public/favicon.ico" type="image/x-icon">
   </head>
   <body>
     <h1>EMMES</h1>
     <div class="container" id="main-container">
 
       <div class="box" id="stats-box"> 
-        <img src="/cat.jpeg" alt="">
+        <div id="username">
+          <h1>Hi User!</h1>
+        </div>
         <div class="stats">
           <div class="currency">
             <p>c1: 2180</p>
@@ -32,6 +34,45 @@
       </div>
 
       <div class="box" id="content-box">
+        <div class="testbox">
+
+          <div class="testButtons">
+            <button class="tab-button" id="one-button">one</button>
+            <button class="tab-button" id="two-button">two</button>
+            <button class="tab-button" id="three-button">three</button>
+            <button class="tab-button" id="four-button">four</button>
+          </div>
+
+          <div class="testContent"> 
+            <div id="one">
+              <ul>
+                <li class="task">example task</li>
+                <li class="complete"></li>
+              </ul>
+              <p>One</p>
+              <p>One</p>
+              <p>One</p>
+            </div>
+            <div id="two" hidden>
+              <p>two</p>
+              <p>two</p>
+              <p>two</p>
+            </div>
+            <div id="three" hidden>
+              <p>three</p>
+              <p>three</p>
+              <p>three</p>
+            </div>
+            <div id="four" hidden>
+              <p>four</p>
+              <p>four</p>
+              <p>four</p>
+            </div>
+
+          </div>
+
+        </div>
+
         <ul class="nav-bar">
           <li class="left-tabs">
             <a class="tab-button" id="tab-daily" href="#daily">daily</a>
@@ -44,21 +85,21 @@
         <div class="tab-content">
           <div id="daily">
             <ul id="daily-tasks">
-              <li>Hit the gym</li>
+              <li>Example of a daily task. Remove me by clicking the X to the right -></li>
               <li class="checked">Pay bills</li>
               <li>Meet George</li>
             </ul>
           </div>
           <div id="weekly">
             <ul id="weekly-tasks">
-              <li>Do chores</li>
+              <li>Example of a weekly task. Remove me by clicking the X to the right -></li>
               <li class="checked">Pay rent</li>
               <li>Meet Bob</li>
             </ul>
           </div>
           <div id="monthly">
             <ul id="monthly-tasks">
-              <li>Do chores</li>
+              <li>Example of a monthly task. Remove me by clicking the X to the right -></li>
               <li class="checked">Pay rent</li>
               <li>Meet Bob</li>
             </ul>
@@ -67,7 +108,7 @@
             <p>here is store</p>
           </div>
         </div>
-        <div id="new-task" class="header">
+        <div class="new-task-input">
           <input type="text" id="myInput" placeholder="new task">
           <span class="addBtn">Add</span>
         </div>
@@ -75,7 +116,7 @@
 
     </div>
 
-    <script src="oneko.js"></script>
-    <script type="module" src="main.js"></script>
+    <script src="./src/oneko.js"></script>
+    <script type="module" src="./src/main.js"></script>
   </body>
 </html>
