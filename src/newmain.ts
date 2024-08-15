@@ -1,3 +1,4 @@
+/** Navigation */ 
 import { switchTab } from "./tabs"
 
 const testBox = document.querySelector(".testbox")!;
@@ -20,3 +21,5 @@ testButtons.forEach(btn => {
         switchTab(targetDiv, remainingDivs);
     });
 });
+
+/** Tasks  */
