@@ -88,6 +88,7 @@ function addTask(activeTabId: string, task: Task): void {
 
     const listItem = document.createElement('li');
     listItem.className = 'task'
+    listItem.dataset.taskId = task.id.toString();
 
     const taskDataDiv = document.createElement('div');
     taskDataDiv.className = 'task-data'
@@ -113,6 +114,19 @@ function addTask(activeTabId: string, task: Task): void {
 };
 
 /** Complete a task */
+let tasks = document.querySelectorAll(".task");
+
+function completeOnClick() {
+    tasks = document.querySelectorAll(".task");
+
+    tasks.forEach(task=> {
+        task.addEventListener("click", (e) => {
+
+        })
+    });
+}
+
+completeOnClick();
 
 /** Delete a task */
 
