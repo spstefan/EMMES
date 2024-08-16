@@ -17,8 +17,8 @@ export { switchTab };
  * 
  * @throws {TypeError} If either 'focusTab' or the contents of 'tabList' are not of type HTMLDivElement.
  */
-function switchTab(focusTab: HTMLDivElement, tabList: NodeList): void {
-    
+function switchTab(focusTab: HTMLDivElement, tabList: HTMLDivElement[]): void {
+
     tabList.forEach(div => {
         if (div instanceof HTMLDivElement) {
             div.setAttribute('hidden', 'true');
@@ -28,20 +28,26 @@ function switchTab(focusTab: HTMLDivElement, tabList: NodeList): void {
         }
     });
 
+    console.log("heloo" + focusTab);
+    
     focusTab.removeAttribute('hidden')
     disableButton(focusTab)
 };
 
 /** Disables the button of the corresponding tab. */
 function disableButton(tab: HTMLDivElement): void {
-    const tabId = tab.getAttribute('id');
+    let tabId = tab.getAttribute('id');
+    tabId = tabId!.split('-tab')[0];
     const button = document.getElementById(`${tabId}-button`) as HTMLButtonElement;
     button.disabled = true;
 };
 
 /** Enables the button of the corresponding tab. */
 function enableButton(tab: HTMLDivElement): void {
-    const tabId = tab.getAttribute('id');
+    let tabId = tab.getAttribute('id');
+    tabId = tabId!.split('-tab')[0];
+    console.log(tabId);
+    
     const button = document.getElementById(`${tabId}-button`) as HTMLButtonElement;
     button.disabled = false;
 };

@@ -34,46 +34,65 @@
       </div>
 
       <div class="box" id="content-box">
-        <div class="testbox">
+        <div class="tab-buttons">
+          <button class="tab-button" id="daily-button">daily</button>
+          <button class="tab-button" id="weekly-button">weekly</button>
+          <button class="tab-button" id="milestones-button">milestones</button>
+          <button class="tab-button" id="store-button">store</button>
+        </div>
 
-          <div class="testButtons">
-            <button class="tab-button" id="one-button">one</button>
-            <button class="tab-button" id="two-button">two</button>
-            <button class="tab-button" id="three-button">three</button>
-            <button class="tab-button" id="four-button">four</button>
+        <div class="tab-containers"> 
+
+          <div class="tab-content" id="daily-tab">
+            <ul class="task-list">
+              <li class="task">
+                <div class="task-data"> 
+                  <p>buy catfood</p>
+                  <p>50</p>
+                </div>
+                <button class="delete-button">X</button>
+              </li>
+              <li class="task">
+                <div class="task-data"> 
+                  <p>buy catfood</p>
+                  <p>50 coins</p>
+                </div>
+                <button class="delete-button">X</button>
+              </li>
+            </ul>
+            <form class="task-input-bar" id="daily-form">
+              <input type="text" id="daily-description" placeholder="Write a new task...">
+              <input type="text" id="daily-reward" placeholder="Set a reward...">
+              <button type="submit">Add Task</button>
+            </form>
           </div>
 
-          <div class="testContent"> 
-            <div id="one">
-              <ul>
-                <li class="task">example task</li>
-                <li class="complete"></li>
-              </ul>
-              <p>One</p>
-              <p>One</p>
-              <p>One</p>
-            </div>
-            <div id="two" hidden>
-              <p>two</p>
-              <p>two</p>
-              <p>two</p>
-            </div>
-            <div id="three" hidden>
-              <p>three</p>
-              <p>three</p>
-              <p>three</p>
-            </div>
-            <div id="four" hidden>
-              <p>four</p>
-              <p>four</p>
-              <p>four</p>
-            </div>
+          <div class="tab-content" id="weekly-tab" hidden>
+            <ul class="task-list"></ul>
+            <form class="task-input-bar" id="weekly-form">
+              <input type="text" id="weekly-description" placeholder="desc">
+              <input type="text" id="weekly-reward" placeholder="reward">
+              <button type="submit">Add Task</button>
+            </form>
+          </div>
 
+          <div class="tab-content" id="milestones-tab" hidden>
+            <ul class="task-list"></ul>
+            <form class="task-input-bar" id="milestones-form">
+              <input type="text" id="milestones-description" placeholder="desc">
+              <input type="text" id="milestones-reward" placeholder="reward">
+              <button type="submit">Add Task</button>
+            </form>
+          </div>
+
+          <div class="tab-content" id="store-tab" hidden>
           </div>
 
         </div>
 
-        <ul class="nav-bar">
+        
+
+       <!--  <ul class="nav-bar">
           <li class="left-tabs">
             <a class="tab-button" id="tab-daily" href="#daily">daily</a>
             <a class="tab-button" id="tab-weekly" href="#weekly">weekly</a>
@@ -112,11 +131,12 @@
           <input type="text" id="myInput" placeholder="new task">
           <span class="addBtn">Add</span>
         </div>
-      </div>
+      </div> -->
 
     </div>
 
     <script src="./src/oneko.js"></script>
-    <script type="module" src="./src/main.js"></script>
+    <!-- <script type="module" src="./src/main.js"></script> -->
+    <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
