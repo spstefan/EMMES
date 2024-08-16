@@ -20,6 +20,10 @@ export class Task {
         return this._id;
     }
 
+    get taskCompletionStatus(): boolean {
+        return this.completionStatus;
+    }
+    
     completeTask(): void {
         this.completionStatus = true;
     }

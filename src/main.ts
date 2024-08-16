@@ -71,24 +71,33 @@ inputForms.forEach(inputForm => {
         } 
 
         const task = new Task(description, reward)
-        console.log(task.getTaskInfo());
-        task.completeTask()
-        console.log(task.getTaskInfo());
-
         addTask(activeTabId, task)
         
         // save in indexedDB
     })
 });
 
+// Map to keep track of list items and their associated task objects.
+const taskMap = new Map<string, Task>();
+
+function getTaskById(id: string): Task | undefined {
+    return taskMap.get(id);
+}
+
 /** Converts a task object to a list item under the provided tab */
 function addTask(activeTabId: string, task: Task): void {
     const activeTab = document.getElementById(activeTabId)!;
     const taskList = activeTab.querySelector('ul')!;
 
+    // Create list item
     const listItem = document.createElement('li');
     listItem.className = 'task'
+
+    // Link list item to associated task object
     listItem.dataset.taskId = task.id.toString();
+    taskMap.set(task.id.toString(), task);
+    listItem.dataset.taskStatus = task.taskCompletionStatus.toString();
+    
 
     const taskDataDiv = document.createElement('div');
     taskDataDiv.className = 'task-data'
@@ -111,6 +120,7 @@ function addTask(activeTabId: string, task: Task): void {
 
     taskList.appendChild(listItem);
     attachDeleteButton();
+    completeOnClick();
 };
 
 /** Complete a task */
@@ -121,7 +131,17 @@ function completeOnClick() {
 
     tasks.forEach(task=> {
         task.addEventListener("click", (e) => {
+            // Get the ID of the task's list item
+            let listItem = task as HTMLLIElement
+            let id = listItem.dataset.taskId!;
+    
+            // Find the associated Task object using ID
+            const taskObject = getTaskById(id);
 
+            // Mark Task object as complete
+            taskObject?.completeTask()
+            // Mark associated list item as complete
+            listItem.dataset.taskStatus = 'true';
         })
     });
 }
