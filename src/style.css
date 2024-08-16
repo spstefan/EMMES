@@ -215,3 +215,13 @@ ul {
   cursor: pointer;
   border-radius: 0 5px 5px 0;
 }
+
+li[data-task-status="true"] {
+  background-color: green;
+  color: rgb(0, 255, 89);
+}
+
+li[data-task-status="false"] {
+  background-color: red;
+  color: rgb(239, 1, 1);
+}
