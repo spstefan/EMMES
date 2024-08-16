@@ -109,8 +109,24 @@ function addTask(activeTabId: string, task: Task): void {
     listItem.appendChild(deleteButton);
 
     taskList.appendChild(listItem);
+    attachDeleteButton();
 };
 
 /** Complete a task */
 
 /** Delete a task */
+
+let deleteButtons = document.querySelectorAll(".delete-button");
+
+function attachDeleteButton() {
+    deleteButtons = document.querySelectorAll(".delete-button");
+
+    deleteButtons.forEach(deleteButton => {
+        deleteButton.addEventListener("click", (e) => {
+            const parentTask = deleteButton.closest('li')!;
+            parentTask.remove();
+        })
+    });
+}
+
+attachDeleteButton();
