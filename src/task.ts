@@ -2,11 +2,22 @@ export class Task {
     private description: string;
     private rewardValue: number;
     private completionStatus: boolean;
+    private static idCounter: number = 0;
+    private readonly _id: number;
 
     constructor(description: string, rewardValue: number, completionStatus: boolean = false) {
         this.description = description;
         this.rewardValue = rewardValue;
         this.completionStatus = completionStatus; 
+        this._id = Task.generateId();
+    }
+
+    private static generateId(): number {
+        return ++Task.idCounter;
+    }
+
+    get id(): number {
+        return this._id;
     }
 
     completeTask(): void {
